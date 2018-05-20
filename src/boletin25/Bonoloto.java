@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  *
@@ -17,7 +18,7 @@ import java.util.function.Consumer;
 public class Bonoloto extends javax.swing.JFrame {
 
     List<Integer> numeros = new ArrayList();
-    ArrayList<String> resultado = new ArrayList();
+    List<Integer> resultado = new ArrayList();
     List<Integer> premio = new ArrayList();
 
     /**
@@ -96,6 +97,7 @@ public class Bonoloto extends javax.swing.JFrame {
         jButton51 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -468,9 +470,9 @@ public class Bonoloto extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\andrea\\Documents\\NetBeansProjects\\boletin25\\imagenes_BL_Horiz_b66ef98d.jpg")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\andrea\\Documents\\NetBeansProjects\\boletin25\\src\\boletin25\\imagenes_BL_Horiz_b66ef98d.jpg")); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\andrea\\Documents\\NetBeansProjects\\boletin25\\descarga.jpg")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\andrea\\Documents\\NetBeansProjects\\boletin25\\src\\boletin25\\descarga.jpg")); // NOI18N
 
         jButton50.setText("LIMPIA");
         jButton50.addActionListener(new java.awt.event.ActionListener() {
@@ -489,6 +491,8 @@ public class Bonoloto extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 153, 0));
         jLabel5.setText("Aciertos :");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\andrea\\Documents\\NetBeansProjects\\boletin25\\imagenes_BL_Horiz_b66ef98d.jpg")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -621,7 +625,8 @@ public class Bonoloto extends javax.swing.JFrame {
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(39, 39, 39)
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(40, 40, 40)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -718,12 +723,14 @@ public class Bonoloto extends javax.swing.JFrame {
                                 .addComponent(jButton51, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3)))
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1162,71 +1169,40 @@ public class Bonoloto extends javax.swing.JFrame {
         int cinco = (int) (Math.random() * (50 - 1) + 1);
         int seis = (int) (Math.random() * (50 - 1) + 1);
         //numeros.sort((Comparator<? super Integer>));
-        jTextField1.setText(numeros.toString() + "");
-        resultado.add(String.valueOf(uno));
-        resultado.add(String.valueOf(dos));
-        resultado.add(String.valueOf(tres));
-        resultado.add(String.valueOf(cuatro));
-        resultado.add(String.valueOf(cinco));
-        resultado.add(String.valueOf(seis));
+        jTextField1.setText(numeros.toString());
+        resultado.add(uno);
+        resultado.add(dos);
+        resultado.add(tres);
+        resultado.add(cuatro);
+        resultado.add(cinco);
+        resultado.add(seis);
 
-        jTextField2.setText(resultado.toString() + "");
-        numeros.stream().filter((i) -> (numeros.get(i).equals(uno))).forEachOrdered((Integer _item) -> {
+        jTextField2.setText(resultado.toString());
+
+        //jTextField3.setBackground(Color.RED);
+        if (numeros.iterator().next() == uno) {
             premio.add(uno);
-        });
-        numeros.stream().filter((i) -> (numeros.get(i).equals(dos))).forEachOrdered((Integer _item) -> {
+        }
+        if (numeros.iterator().next() == dos) {
             premio.add(dos);
-        });
-        numeros.stream().filter((i) -> (numeros.get(i).equals(tres))).forEachOrdered((Integer _item) -> {
+        }
+        if (numeros.iterator().next() == tres) {
             premio.add(tres);
-        });
-        numeros.stream().filter((i) -> (numeros.get(i).equals(cuatro))).forEachOrdered((Integer _item) -> {
+        }
+        if (numeros.iterator().next() == cuatro) {
             premio.add(cuatro);
-        });
-        numeros.stream().filter((i) -> (numeros.get(i).equals(cinco))).forEachOrdered((Integer _item) -> {
+        }
+        if (numeros.iterator().next() == cinco) {
             premio.add(cinco);
-        });
-        numeros.stream().filter((i) -> (numeros.get(i).equals(seis))).forEachOrdered((Integer _item) -> {
+        }
+        if (numeros.iterator().next() == seis) {
             premio.add(seis);
-        });
-        jTextField3.setBackground(Color.RED);
-        jTextField3.setText(premio.toString() + " ");
-//        if (numeros.get(0) == uno || numeros.get(1) == uno || numeros.get(2) == uno || numeros.get(3) == uno
-//                || numeros.get(4) == uno || numeros.get(5) == uno) {
-//            jTextField2.setText("V" + "");
-//        } else {
-//            jTextField2.setText("X" + "");
-//        }
-//        if (numeros.get(0) == dos || numeros.get(1) == dos || numeros.get(2) == dos || numeros.get(3) == dos
-//                || numeros.get(4) == dos || numeros.get(5) == dos) {
-//            jTextField2.setText("V" + "");
-//        } else {
-//            jTextField2.setText("X" + "");
-//        }
-//        if (numeros.get(0) == tres || numeros.get(1) == tres || numeros.get(2) == tres || numeros.get(3) == tres
-//                || numeros.get(4) == tres || numeros.get(5) == tres) {
-//            jTextField2.setText("V" + "");
-//        } else {
-//            jTextField2.setText("X" + "");
-//        }
-//        if (numeros.get(0) == cuatro || numeros.get(1) == cuatro || numeros.get(2) == cuatro || numeros.get(3) == cuatro
-//                || numeros.get(4) == cuatro || numeros.get(5) == cuatro) {
-//            jTextField2.setText("V" + "");
-//        } else {
-//            jTextField2.setText("X" + "");
-//        }
-//        if (numeros.get(0) == cinco || numeros.get(1) == cinco || numeros.get(2) == cinco || numeros.get(3) == cinco
-//                || numeros.get(4) == cinco || numeros.get(5) == cinco) {
-//            jTextField2.setText("V" + "");
-//        } else {
-//            jTextField2.setText("X" + "");
-//        }
-//        if (numeros.get(0) == seis || numeros.get(1) == seis || numeros.get(2) == seis || numeros.get(3) == seis
-//                || numeros.get(4) == seis || numeros.get(5) == seis) {
-//            jTextField2.setText("V" + "");
-//        } else {
-//            jTextField2.setText("X" + "");
-//        }
+        }
+        if (premio == null) {
+            jTextField3.setText("No hay numeros acertados");
+        } else {
+            jTextField3.setText(premio.toString());
+        }
 
 
     }//GEN-LAST:event_jButton51ActionPerformed
@@ -1323,6 +1299,7 @@ public class Bonoloto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
